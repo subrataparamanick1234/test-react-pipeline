@@ -83,4 +83,4 @@ jobs:
           sed -i "s#${{ github.actor }}.*#${{ github.actor }}/test-react-pipeline:${{ github.sha }}#g" deployment.yaml
           git add deployment.yaml
           git commit -m "Update image tag to ${{ github.sha }}"
-          git push origin master
+          git push origin main
