@@ -70,7 +70,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: subrataparamanick1234/pineline-main-repo
-          ref: master
+          ref: main
           token: ${{ secrets.G_TOKEN }}
 
       - name: Configure Git
