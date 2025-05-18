@@ -41,7 +41,7 @@ jobs:
       - name: Log in to DockerHub
         uses: docker/login-action@v2
         with:
-          username: "subratapixel"
+          username: "subrataparamanick1234"
           password: "Domjur@123"
 
       - name: Log in to GitHub Container Registry
@@ -57,8 +57,8 @@ jobs:
           context: .
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: |
-            subratapixel/test-pipeline-react:${{ github.sha }}
-            ghcr.io/subratapixel/test-pipeline-react:${{ github.sha }}
+            subratapixel/test-react-pipeline:${{ github.sha }}
+            ghcr.io/subratapixel/test-react-pipeline:${{ github.sha }}
 
   update-manifest-stage:
     name: Update Manifest Repo
@@ -69,18 +69,18 @@ jobs:
       - name: Checkout GitOps repo
         uses: actions/checkout@v3
         with:
-          repository: subratapixel/gitops-infra
+          repository: subrataparamanick1234/pineline-main-repo
           ref: master
           token: ${{ secrets.G_TOKEN }}
 
       - name: Configure Git
         run: |
-          git config --global user.email "subrata.pramanick@pixelconsultancy.in"
-          git config --global user.name "subratapixel"
+          git config --global user.email "subrataparamanick1234@gmail.com"
+          git config --global user.name "subrataparamanick1234"
 
       - name: Update deployment image tag
         run: |
-          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/test-pipeline-react:${{ github.sha }}#g" deployment.yaml
+          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/test-react-pipeline:${{ github.sha }}#g" deployment.yaml
           git add deployment.yaml
           git commit -m "Update image tag to ${{ github.sha }}"
           git push origin master
